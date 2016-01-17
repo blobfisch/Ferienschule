@@ -6,6 +6,7 @@ form.php
 	calls php/input.php			//writes the user input to database
 		calls validate_form_data			//prevent invalid data and sql injections
 ```
+```
 *scripts for the administrator*
 /admin
 	interface.html //makes scrips easily accessible through buttons
