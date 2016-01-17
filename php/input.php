@@ -1,0 +1,64 @@
+<!-- Import Bootstrap to make errormessages in iframe look nice -->
+<head>
+	<title>Ferienschule des Ellenrieder Gymnasiums</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<?php
+
+
+
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "ferienschule";
+
+	// Create connection
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+	// Check connection
+	if (!$conn) {
+	    die("Connection failed: " . mysqli_connect_error());
+	}
+
+	// Change character set to utf8 (fixed encoding errors)
+	mysqli_set_charset($conn,"utf8");
+
+	require 'validate_form_data.php';
+
+	if($data_ok){
+		//insert user data into students
+		$sql = "INSERT INTO students (firstname, lastname, email, grade, class) VALUES ('$firstname', '$lastname', '$email','$grade','$class');"; //the variables are created and checked in validate_form_data.php
+
+		if (mysqli_query($conn, $sql)) {
+		    //echo "Anmeldung erfolgreich!";
+		} else {
+		    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
+
+		//insert selected topics into students_topics
+		$sql = "";
+		$id = mysqli_insert_id($conn);
+		foreach($_POST["topics"] as $topic){
+			$sql .= "INSERT INTO students_topics (id_student, id_topic) VALUES ('$id','$topic');";
+		}
+
+		if (mysqli_multi_query($conn, $sql)) {
+		    echo "<div class='alert alert-success'>Anmeldung erfolgreich!</div>";
+		} else {
+		    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
+
+		mysqli_close($conn);
+	}
+	else{
+		echo "<div class='alert alert-danger'>Anmeldung fehlgeschlagen!</div>";
+	}
+?> 

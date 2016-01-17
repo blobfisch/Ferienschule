@@ -1,0 +1,33 @@
+
+//joins students name with topic title
+SELECT students.firstname, students.lastname, topics.title
+FROM students
+JOIN students_topics
+ON students.id_student=students_topics.id_student
+JOIN topics
+ON students_topics.id_topic=topics.id_topic;
+
+//joins id_topic with id_student
+SELECT topics.id_topic, students.id_student
+FROM topics
+JOIN students_topics
+ON students_topics.id_topic=topics.id_topic
+JOIN students
+ON students.id_student=students_topics.id_student;
+
+//show every group with students
+SELECT groups.id_group, groups.id_topic, students.id_student, students.firstname
+FROM groups
+JOIN students_groups
+ON groups.id_group=students_groups.id_group
+JOIN students
+ON students.id_student=students_groups.id_student
+order by groups.id_group;
+
+SELECT students.firstname, students.lastname, students.grade, students.class, topics.subject, topics.title,  
+FROM students
+JOIN students_topics
+ON students.id_students=students_topics.id_students
+JOIN topics
+ON topics.id_topics=students_topics.id_topic
+order by student.grade;

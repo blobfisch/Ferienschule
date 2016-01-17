@@ -1,0 +1,32 @@
+Lohner-TODOs
+
+Doppeltanmeldungen blockieren
+Mini-Admininterface mit Knöpfen für scripte
+Schüler rauslöschen
+
+
+
+
+
+Namen nur einmal zulassen
+
+Zeiten & Räume eigentlicher Stundenplan
+
+anzahl der gruppen zum thema hinzufügen?
+anzahl der schüler zur gruppe hinzufügen -> damit könnte ermittelt werden wo noch platz ist
+n-te gruppe zur gruppe hinzufügen
+
+tabellen generieren
+
+prepared statements?
+
+rewrite import_themenliste.php with PHPExcel
+
+admin interface html
+
+bei generate_groups und import_themenliste tabellen vorher leeren
+
+Fragen an Gudrun
+Priorität bei der Einteilung
+Was genau ist die Liste: Freie Plätze, gruppen < 5?
+Muss das Format Spalten Kreuzchen eingehalten werden?
