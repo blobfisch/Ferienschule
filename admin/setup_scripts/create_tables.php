@@ -49,10 +49,12 @@ id_student INT(6) UNSIGNED,
 id_topic INT(6) UNSIGNED,
 CONSTRAINT fk_students_topics_student
     FOREIGN KEY (id_student)
-    REFERENCES students (id_student),
+    REFERENCES students (id_student)
+    ON DELETE CASCADE,
 CONSTRAINT fk_students_topics_topic
     FOREIGN KEY (id_topic)
     REFERENCES topics (id_topic)
+    ON DELETE CASCADE
 )";
 
 
