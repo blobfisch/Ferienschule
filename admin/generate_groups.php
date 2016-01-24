@@ -67,20 +67,10 @@
 			return $sql_count_students["count"];
 		}
 
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "ferienschule";
-
-	// Create connection
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	// Check connection
-	if (!$conn) {
-	    die("Connection failed: " . mysqli_connect_error());
-	}
-
-	// Change character set to utf8 (fixed encoding errors)
-	mysqli_set_charset($conn,"utf8");
+	require_once("../php/sql_functions.php");
+	
+	//function in php/sql_functions.php
+	$conn = build_connection();
 
 	$topics = mysqli_query($conn,"SELECT topics.id_topic FROM topics;");
 	while($topic = mysqli_fetch_assoc($topics)) {
@@ -99,7 +89,9 @@
 				ON students_topics.id_topic=topics.id_topic
 				JOIN students
 				ON students.id_student=students_topics.id_student
-				WHERE topics.id_topic = ".$topic['id_topic'].";"
+				WHERE topics.id_topic = ".$topic['id_topic']."
+				ORDER BY students.class;"
+
 			); 
 
 			$distribution = distribute_students($number_of_students);
@@ -122,6 +114,6 @@
 		}
 	}
 
-	mysqli_close($conn);
+	close_connection($conn);
 
 ?>

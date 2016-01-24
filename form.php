@@ -17,21 +17,21 @@
 </head>
 <body>
 	<div>
-		<form action="php/input.php" method="post" target="error_m" role="form">
+		<form action="php/input.php" method="post" target="error_m">
 			<div class="form-group" >
 				<label for="firstname">Vorname:</label>
 				<input type="text" name="firstname" class="form-control" maxlength="45">
 			</div><br/>
 			<div class="form-group" class="form-inline">
 				<label for="lastname">Nachname:</label>
-				<input type="text" name="lastname" class="form-control maxlength="45"">
+				<input type="text" name="lastname" class="form-control" maxlength="45">
 			</div><br/>
 			<div class="form-group" class="form-inline">
 				<label for="email">Email:</label>
-				<input type="text" name="email" class="form-control maxlength="45"">
+				<input type="text" name="email" class="form-control" maxlength="45">
 			</div><br/>
 			<div class="form-group" class="form-inline">
-				<label for="sel1">Klasse:</label>
+				<label for="grade">Klasse:</label>
 				<select name="grade" class="form-control">
 					<option value="6">6</option>
 					<option value="7">7</option>
@@ -46,7 +46,7 @@
 				<label class="radio-inline"><input type="radio" name="class" value="E">E</label>
 			</div><br/>
 
-			<div class="form-group" class="form-inline">
+			<div class="form-group form-inline">
 
 				<?php require 'choose_topics.php' ?><br/>
 

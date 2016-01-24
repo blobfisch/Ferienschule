@@ -50,4 +50,14 @@
 		$data_ok = false;
 		echo "<div class='alert alert-warning'>Bitte wähle eine Klasse aus</div>";
 	}
-?>
+
+	//Check if record exists already to prevent double entrys
+	if($data_ok){
+		$result = mysqli_fetch_assoc(
+			mysqli_query($conn, "SELECT COUNT(*) AS count FROM students WHERE firstname = '$firstname' AND lastname = '$lastname' AND grade = '$grade';")
+		); 
+		if($result["count"]>0){
+			echo "<div class='alert alert-warning'>Wir haben bereits eine Anmeldung unter diesem Namen erhalten. Wenden Sie sich bitte an ...</div>";
+			$data_ok=false;
+		}
+	}

@@ -1,15 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ferienschule";
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 
 // sql to create table sudents
 $sql = "CREATE TABLE students(
@@ -85,10 +75,12 @@ id_student INT(6) UNSIGNED,
 id_group INT(6) UNSIGNED,
 CONSTRAINT fk_students_groups_student
     FOREIGN KEY (id_student)
-    REFERENCES students (id_student),
+    REFERENCES students (id_student)
+    ON DELETE CASCADE,
 CONSTRAINT fk_students_groups_group
     FOREIGN KEY (id_group)
     REFERENCES groups (id_group)
+    ON DELETE CASCADE
 )";
 
 if (mysqli_query($conn, $sql)) {
@@ -97,5 +89,5 @@ if (mysqli_query($conn, $sql)) {
     echo "Error creating table 'students_groups': " . mysqli_error($conn);
 }
 
-mysqli_close($conn);
+
 ?> 

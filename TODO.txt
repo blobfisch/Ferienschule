@@ -1,14 +1,13 @@
 Lohner-TODOs
 
-Doppeltanmeldungen blockieren
-Mini-Admininterface mit Knöpfen für scripte
-Schüler rauslöschen
+Doppeltanmeldungen blockieren --
+Mini-Admininterface mit Knöpfen für scripte --
+Schüler rauslöschen --
+rewrite import_themenliste
 
 
 
-
-
-Namen nur einmal zulassen
+CHECK: Mindestens ein Thema ausgewählt 
 
 Zeiten & Räume eigentlicher Stundenplan
 
@@ -27,6 +26,7 @@ admin interface html
 bei generate_groups und import_themenliste tabellen vorher leeren
 
 Fragen an Gudrun
-Priorität bei der Einteilung
+Priorität bei der Einteilung (kleine Gruppen, Klassen) 
 Was genau ist die Liste: Freie Plätze, gruppen < 5?
 Muss das Format Spalten Kreuzchen eingehalten werden?
+Welche Listen werden ganz genau benötigt -> aufzeichen

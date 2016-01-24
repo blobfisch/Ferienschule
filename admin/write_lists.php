@@ -1,24 +1,14 @@
 <?php 
 	function get_sql_result($sql){
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$dbname = "ferienschule";
-
-		// Create connection
-		$conn = mysqli_connect($servername, $username, $password, $dbname);
-		// Check connection
-		if (!$conn) {
-		    die("Connection failed: " . mysqli_connect_error());
-		}
-
-		// Change character set to utf8 (fixed encoding errors)
-		mysqli_set_charset($conn,"utf8");
+		require_once("../php/sql_functions.php");
+	
+		//function in php/sql_functions.php
+		$conn = build_connection();
 
 		$result = mysqli_query($conn, $sql);
 		//confirm_query($result);
 
-		mysqli_close($conn);
+		close_connection($conn);
 
 		return $result;
 	}

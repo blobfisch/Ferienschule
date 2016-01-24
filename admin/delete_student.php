@@ -1,50 +1,40 @@
 <?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "ferienschule";
-
-	// Create connection
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	// Check connection
-	if (!$conn) {
-	    die("Connection failed: " . mysqli_connect_error());
-	}
+		
+	require_once("../php/sql_functions.php");
+	
+	//function in php/sql_functions.php
+	$conn = build_connection();
 
 /* delete student from database */
-	if(isset($_POST['submit']))
-	{
-    $id_student = $_POST['student'];
-    echo $id_student;
-    $sql = "DELETE FROM students WHERE id_student = ".$id_student.";";
+  if(isset($_POST['student'])){
+  	$id_student = $_POST['student'];
+  	unset($_POST);
+	  $sql = "DELETE FROM students WHERE id_student = '".$id_student."';";
 
 		if (mysqli_query($conn, $sql)) {
-		    echo "Schüler gelöscht";
+		    echo "<div class='alert alert-success'>Schüler gelöscht</div>";
 		} else {
 		    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
-	    
-	}
 
-
+  }
 /* build dropdown */
-	// Change character set to utf8 (fixed encoding errors)
-	mysqli_set_charset($conn,"utf8");
-
-	$students = mysqli_query($conn, "SELECT id_student, lastname, firstname FROM students GROUP BY lastname;");
-
-	echo "<form method='post' action='".$_SERVER['PHP_SELF']."' target='_self'>" ;
-	echo "<div class='form-group'><select class='form-control' id='student'>";
+	$students = mysqli_query($conn, "SELECT id_student, lastname, firstname FROM students ORDER BY lastname;");
+	echo "<form method='post' action='".$_SERVER['PHP_SELF']."' target='_self'>";
+	echo "<div class='form-group form-inline'><select name='student' class='form-control' >";
+	echo "<option selected disabled hidden value=''></option>";
 	while($student = mysqli_fetch_assoc($students)) {
-			//echo "<button type='button' data-toggle='collapse' class='btn btn-info' data-target='#grade".$grade."'>Klasse: ".$grade."</button></br>";
+
 		echo "<option value='".$student["id_student"]."'>".$student["lastname"].", ".$student["firstname"]."</option>";
 	}
-	echo "</select><br/>";
+	echo "</select>";
 	echo "<button type='submit' class='btn btn-danger'>Löschen</button>";
 	echo "</div></form>";
+
+
 	
 
 	//close sql connection
-	mysqli_close($conn);
+	close_connection($conn);
 
 ?>

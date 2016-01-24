@@ -1,17 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ferienschule";
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+//build sql connection
+require_once("../../php/sql_functions.php");
+//function in php/sql_functions.php
+$conn = build_connection();
 
-$sql = "DROP DATABASE ".$dbname;
+$sql = "DROP DATABASE ferienschule";
 
 if (mysqli_query($conn, $sql)) {
     echo "Database deleted successfully<br/>";
@@ -19,5 +13,5 @@ if (mysqli_query($conn, $sql)) {
     echo "Error deleting Database: " . mysqli_error($conn);
 }
 
-mysqli_close($conn);
+close_connection($conn);
 ?> 

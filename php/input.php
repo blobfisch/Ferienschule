@@ -12,27 +12,18 @@
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <?php
+		
+	require_once("sql_functions.php");
+	
+	//function in php/sql_functions.php
+	$conn = build_connection();
 
+	require ('validate_form_data.php');
 
-
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "ferienschule";
-
-	// Create connection
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	// Check connection
-	if (!$conn) {
-	    die("Connection failed: " . mysqli_connect_error());
-	}
-
-	// Change character set to utf8 (fixed encoding errors)
-	mysqli_set_charset($conn,"utf8");
-
-	require 'validate_form_data.php';
-
+	
+	
 	if($data_ok){
 		//insert user data into students
 		$sql = "INSERT INTO students (firstname, lastname, email, grade, class) VALUES ('$firstname', '$lastname', '$email','$grade','$class');"; //the variables are created and checked in validate_form_data.php
@@ -56,7 +47,7 @@
 		    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
 
-		mysqli_close($conn);
+		close_connection($conn);
 	}
 	else{
 		echo "<div class='alert alert-danger'>Anmeldung fehlgeschlagen!</div>";

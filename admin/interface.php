@@ -33,12 +33,6 @@
 			</div>
 		</div>
 		<hr/>
-		<h3>Schüler löschen</h3>
-		<?php 
-			require_once('delete_student.php');
-		?>
-
-		<hr/>
 		<h3>Setup</h3>
 		<div class="row">
 			<div class='col-md-4'> <p class='alert alert-danger'>Achtung: alle Daten gehen verloren! </p>
@@ -56,5 +50,14 @@
 				<iframe name="output_2" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 100px;"></iframe>
 			</div>
 		</div>
+		<hr/>
+		<h3>Schüler löschen</h3>
+		<?php
+		
+		require("delete_student.php");
+
+		?>
+
+		
 	</div>
 </body>

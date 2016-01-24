@@ -4,19 +4,19 @@ $username = "root";
 $password = "";
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password);
+$connection = mysqli_connect($servername, $username, $password);
 // Check connection
-if (!$conn) {
+if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
 // Create database
 $sql = "CREATE DATABASE ferienschule;";
-if (mysqli_query($conn, $sql)) {
+if (mysqli_query($connection, $sql)) {
     echo "Database created successfully<br/>";
 } else {
-    echo "Error creating database: " . mysqli_error($conn);
+    echo "Error creating database: " . mysqli_error($connection);
 }
 
-mysqli_close($conn);
+mysqli_close($connection);
 ?> 

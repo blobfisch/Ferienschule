@@ -2,25 +2,13 @@
 	//fills the sql_table topics with the data from data/themenliste.cvs
 	//TODO check wether table is empty
 
+	//build sql connection*
+	require_once("../../php/sql_functions.php");
+	//function in php/sql_functions.php
+	$conn = build_connection();
 
-	//Setup database connection
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "ferienschule";
+
 	$sql = "";
-
-	// Create connection
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	// Check connectionlast
-	if (!$conn) {
-	    die("Connection failed: " . mysqli_connect_error());
-	}
-
-	// Change character set to utf8 (fixed encoding errors)
-	mysqli_set_charset($conn,"utf8");
-
-
 	//Open cvs file
 	$file = fopen("../data/themenliste.csv", "r");
 	$data = fgetcsv($file);
@@ -42,6 +30,6 @@
 	    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 	}
 
-	mysqli_close($conn);
+	close_connection($conn);
 
 ?>

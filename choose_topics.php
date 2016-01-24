@@ -1,20 +1,10 @@
 <?php
 	//creates the tables to be displayed in the form
 	
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "ferienschule";
-
-	// Create connection
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	// Check connection
-	if (!$conn) {
-	    die("Connection failed: " . mysqli_connect_error());
-	}
-
-	// Change character set to utf8 (fixed encoding errors)
-	mysqli_set_charset($conn,"utf8");
+	require_once("php/sql_functions.php");
+	
+	//function in php/sql_functions.php
+	$conn = build_connection();
 
 	//Generate html tables with data from topics
 	$days = array("Mo","Di","Mi","Do","Fr");
@@ -22,7 +12,7 @@
 
 	//create one table for every year
 	foreach($grades as $grade){
-		echo "<button type='button' data-toggle='collapse' class='btn btn-info' data-target='#grade".$grade."'>Klasse: ".$grade."</button></br>";
+		echo "<button type='button' data-toggle='collapse' class='btn btn-info' data-target='#grade".$grade."'>Klasse: ".$grade."</button><br/>";
 		echo "<div  id='grade".$grade."' class='collapse'><table class='table table-condensed table-responsive' class='table-responsive'>"; 
 		$i=0;
 		//print table headline with all the subjects
@@ -49,6 +39,6 @@
 
 	}
 	//close sql connection
-	mysqli_close($conn);
+	close_connection($conn);
 
 ?>
