@@ -39,4 +39,5 @@
 	$objPHPExcel = create_new_PHPexcel_obj();
 
 	require "list_scripts/full_student_list.php";
+	require "list_scripts/email.php";
 ?>

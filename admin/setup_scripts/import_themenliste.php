@@ -2,12 +2,6 @@
 	//fills the sql_table topics with the data from data/themenliste.cvs
 	//TODO check wether table is empty
 
-	//build sql connection*
-	require_once("../../php/sql_functions.php");
-	//function in php/sql_functions.php
-	$conn = build_connection();
-
-
 	$sql = "";
 	//Open cvs file
 	$file = fopen("../data/themenliste.csv", "r");
@@ -30,6 +24,5 @@
 	    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 	}
 
-	close_connection($conn);
 
 ?>

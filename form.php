@@ -49,7 +49,7 @@
 			<div class="form-group form-inline">
 
 				<?php require 'choose_topics.php' ?><br/>
-
+			</div>
 			<div class="form-group" class="form-inline">
 			<button type="submit" class="btn btn-primary">Daten absenden</button>
 		</form><br/>

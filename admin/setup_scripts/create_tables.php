@@ -21,10 +21,11 @@ if (mysqli_query($conn, $sql)) {
 // sql to create table topics
 $sql = "CREATE TABLE topics(
 id_topic INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-title VARCHAR(500) NOT NULL,
+title VARCHAR(200) NOT NULL,
 grade VARCHAR(8) NOT NULL,
 day VARCHAR(8),
-subject VARCHAR(45)
+subject VARCHAR(45),
+max_amount_of_groups INT
 )";
 
 if (mysqli_query($conn, $sql)) {
@@ -58,9 +59,13 @@ if (mysqli_query($conn, $sql)) {
 $sql = "CREATE TABLE groups(
 id_group INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 id_topic INT(6) UNSIGNED,
+id_slot INT(6) UNSIGNED,
 CONSTRAINT fk_topic
     FOREIGN KEY (id_topic)
-    REFERENCES topics (id_topic)
+    REFERENCES topics (id_topic),
+CONSTRAINT fk_slot
+    FOREIGN KEY (id_slot)
+    REFERENCES slots (id_slot)
 )";
 
 if (mysqli_query($conn, $sql)) {
@@ -89,5 +94,16 @@ if (mysqli_query($conn, $sql)) {
     echo "Error creating table 'students_groups': " . mysqli_error($conn);
 }
 
+// sql to create table slots
+$sql = "CREATE TABLE slots(
+id_slot INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+day VARCHAR(8),
+slot INT)";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Table 'slots' created successfully<br/>";
+} else {
+    echo "Error creating table 'groups': " . mysqli_error($conn);
+}
 
 ?> 

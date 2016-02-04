@@ -72,6 +72,17 @@
 	//function in php/sql_functions.php
 	$conn = build_connection();
 
+//TODO: make this work
+/*
+	if(mysqli_multi_query($conn,"DELETE FROM groups;
+		ALTER TABLE groups auto_increment = 1;
+		DELETE FROM students_groups;
+	")){
+	 echo "Tables cleared successfully.<br/>";
+	} else {
+	  echo "Error: "  . mysqli_error($conn);
+	}
+*/
 	$topics = mysqli_query($conn,"SELECT topics.id_topic FROM topics;");
 	while($topic = mysqli_fetch_assoc($topics)) {
 
@@ -90,7 +101,7 @@
 				JOIN students
 				ON students.id_student=students_topics.id_student
 				WHERE topics.id_topic = ".$topic['id_topic']."
-				ORDER BY students.class;"
+				ORDER BY students.grade, students.class;"
 
 			); 
 

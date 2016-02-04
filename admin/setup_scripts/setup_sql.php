@@ -12,6 +12,7 @@
 	require 'create_tables.php';
 	//Fill the table "topics" with data from "data/themenliste.csv"
 	//require 'import_themenliste.php';
+	require 'import_themenliste.php';
 
 	close_connection($conn);
 ?>

@@ -7,9 +7,10 @@ rewrite import_themenliste
 
 
 
-CHECK: Mindestens ein Thema ausgewählt 
 
 Zeiten & Räume eigentlicher Stundenplan
+
+Administrationsinterface absichern (Step 1 und 2 vereinen?)
 
 anzahl der gruppen zum thema hinzufügen?
 anzahl der schüler zur gruppe hinzufügen -> damit könnte ermittelt werden wo noch platz ist
@@ -17,16 +18,16 @@ n-te gruppe zur gruppe hinzufügen
 
 tabellen generieren
 
-prepared statements?
-
 rewrite import_themenliste.php with PHPExcel
 
-admin interface html
-
 bei generate_groups und import_themenliste tabellen vorher leeren
+import_themenliste nur vor erster Anmeldung zulassen
+
 
 Fragen an Gudrun
-Priorität bei der Einteilung (kleine Gruppen, Klassen) 
+Priorität bei der Einteilung (kleine Gruppen, Klassen)
+Wie funktioniert der Stundenplan?
+Räume und Tutoren
 Was genau ist die Liste: Freie Plätze, gruppen < 5?
 Muss das Format Spalten Kreuzchen eingehalten werden?
 Welche Listen werden ganz genau benötigt -> aufzeichen

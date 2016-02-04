@@ -36,15 +36,19 @@
 		<h3>Setup</h3>
 		<div class="row">
 			<div class='col-md-4'> <p class='alert alert-danger'>Achtung: alle Daten gehen verloren! </p>
-				<form action="setup_scripts/drop_db.php" target="output_2">
-					<button type='submit' class='btn btn-danger'>Daten löschen</button>
+				<form action="setup_scripts/drop_db.php" target="output_2" id="conf">
+					<button type='submit' class='btn btn-danger'>1. Daten des letzen Schuljahres löschen</button>
 				</form><br/>
+				<!-- Löschen bestätigen -->
+				<script>
+					$("#conf").submit(function(){
+						var c = confirm("Wirklich alle Daten löschen? Nur nach der Veranstaltung!");
+						return c;
+					});
+				</script>
 				<form action="setup_scripts/setup_sql.php" target="output_2">
-					<button type='submit' class='btn btn-danger'>Setup für das neue Schuljahr</button>
+					<button type='submit' class='btn btn-danger'>2. Setup für das neue Schuljahr</button>
 				</form><br/>
-				<form action="setup_scripts/import_themenliste.php" target="output_2">
-					<button type='submit' class='btn btn-danger'>Themenliste Aktualisieren</button>
-				</form>
 			</div>
 			<div class="col-md-8">
 				<iframe name="output_2" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 100px;"></iframe>

@@ -48,7 +48,11 @@
 	}
 	if(!($class=="A"||$class=="B"||$class=="C"||$class=="D"||$class=="E")){
 		$data_ok = false;
-		echo "<div class='alert alert-warning'>Bitte wähle eine Klasse aus</div>";
+		echo "<div class='alert alert-warning'>Bitte wähle eine Klasse aus!</div>";
+	}
+	if(!isset($_POST["topics"])){
+		$data_ok = false;
+		echo "<div class='alert alert-warning'>Bitte wähle mindestens einen Kurs aus!</div>";
 	}
 
 	//Check if record exists already to prevent double entrys
