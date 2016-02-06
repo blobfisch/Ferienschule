@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div>
-		<form action="php/input.php" method="post" target="error_m">
+		<form name"input" action="php/input.php" method="post" target="error_m">
 			<div class="form-group" >
 				<label for="firstname">Vorname:</label>
 				<input type="text" name="firstname" class="form-control" maxlength="45">

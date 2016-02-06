@@ -13,9 +13,9 @@
 	//Fills the table slots
 	require 'init_slots.php';
 	close_connection($conn);
-	$conn = build_connection();
+
 	//Fill the table "topics" with data from "data/themenliste.csv"
 	require 'import_themenliste.php';
 
-	close_connection($conn);
+	
 ?>

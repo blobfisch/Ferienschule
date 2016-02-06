@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!-- Import Bootstrap to make errormessages in iframe look nice -->
 <head>
 	<title>Ferienschule des Ellenrieder Gymnasiums</title>
