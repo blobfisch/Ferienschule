@@ -10,8 +10,11 @@
 
 	//Add the tables "students", "topics", to the database
 	require 'create_tables.php';
+	//Fills the table slots
+	require 'init_slots.php';
+	close_connection($conn);
+	$conn = build_connection();
 	//Fill the table "topics" with data from "data/themenliste.csv"
-	//require 'import_themenliste.php';
 	require 'import_themenliste.php';
 
 	close_connection($conn);
