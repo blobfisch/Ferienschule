@@ -42,7 +42,7 @@
 			echo "<tr>";
 			echo "<td>".$slot."</td>";
 			foreach($days as $day){
-				echo "<td><ul style='padding: 0;'>";
+				echo "<td><ul style='padding: 0;' class='topics'>";
 				$topics = mysqli_query($conn, "SELECT subject, title, id_topic  
 					FROM topics
 					JOIN slots
@@ -52,11 +52,8 @@
 				$j=0;
 				while($topic = mysqli_fetch_assoc($topics)) {
 					//echo "<li style='display:table-row;'>";
-					if($j>0){
-						echo "<hr/>";
-					}
 					$j++;
-					echo "<label><input type='checkbox' name='topics[]' class='group_$slot$day$grade' data-group='$slot$day$grade' value='".$topic['id_topic']."' onclick='disableOthers(this);'>".$topic["subject"] ." - ".$topic["title"]."</label>";
+					echo "<li><label><input type='checkbox' name='topics[]' class='group_$slot$day$grade' data-group='$slot$day$grade' value='".$topic['id_topic']."' onclick='disableOthers(this);'>".$topic["subject"] ." - ".$topic["title"]."</label></li>";
 					$_SESSION["slots"][$topic['id_topic']] = "$slot$day$grade";
 					//echo "</li>";
 				}

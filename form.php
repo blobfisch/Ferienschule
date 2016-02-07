@@ -14,9 +14,12 @@
 	<!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
 	<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div>
+	<h1>Anmeldung zur Ferienschule</h1>
+	<div id="wrapper">
 		<form name"input" action="php/input.php" method="post" target="error_m">
 			<div class="form-group" >
 				<label for="firstname">Vorname:</label>
@@ -31,8 +34,8 @@
 				<input type="text" name="email" class="form-control" maxlength="45">
 			</div><br/>
 			<div class="form-group" class="form-inline">
-				<label for="grade">Klasse:</label>
-				<select name="grade" class="form-control">
+				<label for="grade">Klasse:</label><br />
+				<select name="grade" class="form-control" id="grade_select">
 					<option value="6">6</option>
 					<option value="7">7</option>
 					<option value="8">8</option>
@@ -51,7 +54,7 @@
 				<?php require 'choose_topics.php' ?><br/>
 			</div>
 			<div class="form-group" class="form-inline">
-			<button type="submit" class="btn btn-primary">Daten absenden</button>
+			<button type="submit" class="btn btn-primary">✔ Daten absenden</button>
 		</form><br/>
 		<iframe name="error_m" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 300px;"></iframe>
 	</div>
