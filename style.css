@@ -27,6 +27,9 @@ ul {
 input[type=checkbox] {
 	margin-right: 5px;
 }
+small{
+	color: rgba(116, 116, 116, 1);
+}
 .topics li {
 	display: block;
 	padding-bottom: 5px;

@@ -3,38 +3,35 @@
 
 	//distributes the amount of students for one topic in equal groups, that are as small as possible
 	function distribute_students($number_of_students){
-		$minimum_for_new_group = 3; //a new group will be formed for 3 people
-		//calculate the number of groups required
-		
-		//check if only one group is required
-		if($number_of_students < 2*$minimum_for_new_group){
-			return array($number_of_students);
-		}
+		$minimum_in_a_group = 3;
+		$maximum_in_a_group = 5; 
+		if ($number_of_students>=$minimum_in_a_group){
+			//calculate the number of groups required
+			$number_of_groups = (int) ceil($number_of_students/$maximum_in_a_group);
+			$remainder = $number_of_students%$number_of_groups;
+			$fill =($number_of_students-$remainder)/$number_of_groups;
 
-		//!This part of the algorithm will only produce correct results for more than one group!
-		//find out the number of groups required
-		$number_of_groups = floor($number_of_students/$minimum_for_new_group); //floor cuts of the digits after decimal point without rounding
-
-		//Instanziate array $groups with one element for every group and the minimum number already in the group
-		$groups = array_fill(0, $number_of_groups, $minimum_for_new_group);
-
-		//subtract the students that were already put into a group
-		$number_of_students-= $minimum_for_new_group*$number_of_groups;
-
-		//distribute the rest equally
-		for($j=0; $j<$number_of_groups; $j++){
-			if($number_of_students>0){
-				$groups[$j]++;
-				$number_of_students--;
+			//Instanziate array $groups with one element for every group 
+			$groups = array_fill(0, $number_of_groups, $fill);
+			//distribute the rest equally
+			for($j=0; $j<$number_of_groups; $j++){
+				if($remainder>0){
+					$groups[$j]++;
+					$remainder--;
+				}
 			}
+			return $groups;
 		}
-
-		return $groups;
+		else{
+			return NULL;
+		}
 	}
 
+	
 
-	function add_group_to_DB($id_topic,$conn){
-		if(mysqli_query($conn, "INSERT INTO groups (id_topic) VALUES ('".$id_topic."');")) {
+	
+	function add_group_to_DB($id_topic,$id_slot,$conn){
+		if(mysqli_query($conn, "INSERT INTO groups (id_topic, id_slot) VALUES ('$id_topic','$id_slot');")) {
 	    $id = mysqli_insert_id($conn);
 	    echo "New group created successfully.<br/>";
 		} else {
@@ -73,17 +70,17 @@
 	$conn = build_connection();
 
 //TODO: make this work
-/*
-	if(mysqli_multi_query($conn,"DELETE FROM groups;
-		ALTER TABLE groups auto_increment = 1;
-		DELETE FROM students_groups;
-	")){
-	 echo "Tables cleared successfully.<br/>";
-	} else {
-	  echo "Error: "  . mysqli_error($conn);
-	}
-*/
-	$topics = mysqli_query($conn,"SELECT topics.id_topic FROM topics;");
+
+//	if(mysqli_multi_query($conn,"DELETE FROM groups;
+//		ALTER TABLE groups auto_increment = 1;
+//		DELETE FROM students_groups;
+//	")){
+//	 echo "Tables cleared successfully.<br/>";
+//	} else {
+//	  echo "Error: "  . mysqli_error($conn);
+//	}
+
+	$topics = mysqli_query($conn,"SELECT id_topic, id_slot FROM topics;");
 	while($topic = mysqli_fetch_assoc($topics)) {
 
 		
@@ -91,10 +88,9 @@
 
 
 		if($number_of_students>0){
-			/*joins id_topic with id_student
-			returns id_student of all the students who applied for this topic*/
+			//joins id_topic with id_student returns id_student of all the students who applied for this topic
 			$students = mysqli_query($conn, "
-				SELECT students.id_student 
+				SELECT students.id_student
 				FROM topics
 				JOIN students_topics
 				ON students_topics.id_topic=topics.id_topic
@@ -104,23 +100,27 @@
 				ORDER BY students.grade, students.class;"
 
 			); 
-
 			$distribution = distribute_students($number_of_students);
-			
+			if($distribution){
 
-			//add one new group
-			$id = add_group_to_DB($topic['id_topic'],$conn);
-			$i = 0;
+				//add one new group
+				$id = add_group_to_DB($topic['id_topic'],$topic['id_slot'],$conn);
+				$i = 0;
 
-			//put students in groups
-			while($student = mysqli_fetch_assoc($students)) {
-				if($distribution[$i]<=0){
-					//create more groups if required
-					$id = add_group_to_DB($topic['id_topic'],$conn);
-					$i++;
+				//put students in groups
+				while($student = mysqli_fetch_assoc($students)) {
+					if($distribution[$i]<=0){
+						//create more groups if required
+						$id = add_group_to_DB($topic['id_topic'],$topic['id_slot'],$conn);
+						$i++;
+					}
+					add_relation_students_groups($student['id_student'],$id,$conn);
+					$distribution[$i]--;
 				}
-				add_relation_students_groups($student['id_student'],$id,$conn);
-				$distribution[$i]--;
+			}
+			else{
+				//Nicht genügend Teilnehmer -> Kurs findet nicht statt!
+				//TODO Handeln
 			}
 		}
 	}
