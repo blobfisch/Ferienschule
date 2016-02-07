@@ -43,7 +43,7 @@
 		}
 
 		if (mysqli_multi_query($conn, $sql)) {
-		    echo "<div class='alert alert-success'>Anmeldung erfolgreich!</div>";
+		    echo "<div class='alert alert-success'>Anmeldung erfolgreich! Die Website kann nun geschlossen werden</div>";
 		} else {
 		    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}

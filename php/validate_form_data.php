@@ -1,5 +1,4 @@
 <?php
-	session_start();
 
 	//TODO evaluate $_POST["topics"]
 	//TODO check if the name already exists?
@@ -53,18 +52,18 @@
 	if(!isset($_POST["topics"])){
 		$data_ok = false;
 		echo "<div class='alert alert-warning'>Bitte wähle mindestens einen Kurs aus!</div>";
-	}
+	} else {
+		$usedSlots = "|";
+		foreach($_POST["topics"] as $id) {
+			$currentSlot = $_SESSION["slots"][$id];
+			if(strpos($usedSlots, "|$currentSlot|")!==false) {
+				echo "<div class='alert alert-warning'>Unmögliche Kurswahl</div>";
+				$data_ok=false;
+				break;
+			} else {
+				$usedSlots .= "$currentSlot|";
 
-	$usedSlots = "|";
-	foreach($_POST["topics"] as $id) {
-		$currentSlot = $_SESSION["slots"][$id];
-		if(strpos($usedSlots, "|$currentSlot|")!==false) {
-			echo "<div class='alert alert-warning'>Unmögliche Kurswahl</div>";
-			$data_ok=false;
-			break;
-		} else {
-			$usedSlots .= "$currentSlot|";
-
+			}
 		}
 	}
 

@@ -1,0 +1,40 @@
+#wrapper {
+	width: 100%;
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 10px;
+}
+h1 {
+	border-bottom: 1px solid #e5e5e5;
+	background-color: #f1f1f1;
+	padding: 15px;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	font-size: 30px;
+	font-weight: normal;
+}
+#grade_select {
+	width: 300px;
+	display: inline-block;
+	margin-right: 20px;
+}
+button {
+	margin-bottom: 10px !important;
+}
+ul {
+	margin-bottom: 0px !important;
+}
+input[type=checkbox] {
+	margin-right: 5px;
+}
+.topics li {
+	display: block;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	border-bottom: 1px solid #ccc;
+	min-height: 100px;
+}
+.topics li:last-child{
+	border-bottom: none;
+}
+
