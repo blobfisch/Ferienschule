@@ -15,7 +15,7 @@
 	close_connection($conn);
 
 	//Fill the table "topics" with data from "data/themenliste.csv"
-	require 'import_themenliste.php';
+	require 'import_themenliste_excel.php';
 
 	
 ?>
