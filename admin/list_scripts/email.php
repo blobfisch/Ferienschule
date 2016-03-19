@@ -25,5 +25,5 @@
 	} 
 
 	$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel); 
-	$objWriter->save('lists/Mailadressen.xlsx'); 
+	$objWriter->save('../../lists/Mailadressen.xlsx'); 
 ?>

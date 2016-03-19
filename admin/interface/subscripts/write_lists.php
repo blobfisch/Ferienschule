@@ -1,6 +1,6 @@
 <?php 
 	function get_sql_result($sql){
-		require_once("../php/sql_functions.php");
+		require_once("../../../php/sql_functions.php");
 	
 		//function in php/sql_functions.php
 		$conn = build_connection();
@@ -33,11 +33,13 @@
 	define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 
 	/* Include PHPExcel */
-	require_once '../PHPExcel/Classes/PHPExcel.php';
+	require_once '../../../PHPExcel/Classes/PHPExcel.php';
 	//require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
 
 	$objPHPExcel = create_new_PHPexcel_obj();
 
-	require "list_scripts/full_student_list.php";
-	require "list_scripts/email.php";
+	require "../../list_scripts/full_student_list.php";
+	require "../../list_scripts/email.php";
+	require "../../list_scripts/full_group_list.php";
+	echo "finished";
 ?>

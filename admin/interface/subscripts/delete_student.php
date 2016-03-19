@@ -1,6 +1,6 @@
 <?php
 		
-	require_once("../php/sql_functions.php");
+	require_once("../../php/sql_functions.php");
 	
 	//function in php/sql_functions.php
 	$conn = build_connection();

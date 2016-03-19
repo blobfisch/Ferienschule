@@ -1,4 +1,19 @@
-<?php session_start(); ?>
+<?php session_start()?>
+<?php/*function send_mail($firstname,$lastname,$id_topic,$conn){
+	$sql = "SELECT * FROM topics WHERE id_topic=$id_topics";
+
+		if (mysqli_query($conn, $sql)) {
+		    
+		} else {
+		    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
+	$mail_text="Hallo $firstname $lastname,
+  du hast dich erfolgreich zur Ferienschule angemeldet!";
+  
+	require("send_mail.php");
+}*/;
+?>
+
 <!-- Import Bootstrap to make errormessages in iframe look nice -->
 <head>
 	<title>Ferienschule des Ellenrieder Gymnasiums</title>
@@ -47,7 +62,8 @@
 		} else {
 		    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
-
+		
+		/*send_mail($firstname,$lastname,$id_topic);*/
 		close_connection($conn);
 	}
 	else{

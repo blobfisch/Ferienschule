@@ -6,7 +6,7 @@
 	//function in php/sql_functions.php
 	$conn = build_connection();
 
-	session_start();
+	
 
 	//Generate html tables with data from topics
 	$days = array("Mo","Di","Mi","Do","Fr");
@@ -52,7 +52,7 @@
 		foreach($slots as $slot){
 			echo "<tr>";
 			$time=$times[$slot-1];
-			echo "<td>".$time."</td>";
+			echo "<td class='text-info'>".$time."</td>";
 			foreach($days as $day){
 				echo "<td><ul style='padding: 0;' class='topics'>";
 				$topics = mysqli_query($conn, "SELECT subject, title, id_topic, max_amount_of_groups 
@@ -73,14 +73,17 @@
 						echo "disabled";
 					}
 					echo ">".$topic["subject"] ."  <small>".$topic["title"]." </small>";
-						if($free_spots>1){
-							echo "<small class='text-success'>[Noch $free_spots freie Plätze]</small>";
+						if($topic['max_amount_of_groups']*5 -$free_spots<3){
+							echo "<small class='text-success'>[Noch $free_spots von ".($topic['max_amount_of_groups']*5)." Plätzen frei -</small><small class='text-warning'> zu wenige!]</small>";
+						}
+						else if($free_spots>1){
+							echo "<small class='text-success'>[Noch $free_spots von ".($topic['max_amount_of_groups']*5)." Plätzen frei]</small>";
 						}
 						else if($free_spots==1){
 							echo "<small class='text-warning'>[Noch ein freier Platz]</small>";
 						}
 						else{
-							echo "<small class='text-danger'> [Keine freien Plätze]</small>";
+							echo "<small class='text-danger'> [Keine freien Plätze mehr]</small>";
 
 						}
 

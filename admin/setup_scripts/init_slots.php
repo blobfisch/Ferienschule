@@ -1,21 +1,21 @@
 <?php
 
 
-	$sql = "INSERT INTO slots (day, slot) VALUES ('Mo', 1);
-	INSERT INTO slots (day, slot) VALUES ('Mo', 2);
-	INSERT INTO slots (day, slot) VALUES ('Mo', 3);
-	INSERT INTO slots (day, slot) VALUES ('Di', 1);
-	INSERT INTO slots (day, slot) VALUES ('Di', 2);
-	INSERT INTO slots (day, slot) VALUES ('Di', 3);
-	INSERT INTO slots (day, slot) VALUES ('Mi', 1);
-	INSERT INTO slots (day, slot) VALUES ('Mi', 2);
-	INSERT INTO slots (day, slot) VALUES ('Mi', 3);
-	INSERT INTO slots (day, slot) VALUES ('Do', 1);
-	INSERT INTO slots (day, slot) VALUES ('Do', 2);
-	INSERT INTO slots (day, slot) VALUES ('Do', 3);
-	INSERT INTO slots (day, slot) VALUES ('Fr', 1);
-	INSERT INTO slots (day, slot) VALUES ('Fr', 2);
-	INSERT INTO slots (day, slot) VALUES ('Fr', 3);
+	$sql = "INSERT INTO slots (day, day_num, slot) VALUES ('Mo',1, 1);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Mo',1, 2);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Mo',1, 3);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Di',2, 1);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Di',2, 2);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Di',2, 3);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Mi',3, 1);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Mi',3, 2);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Mi',3, 3);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Do',4, 1);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Do',4, 2);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Do',4, 3);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Fr',5, 1);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Fr',5, 2);
+	INSERT INTO slots (day, day_num, slot) VALUES ('Fr',5, 3);
 	"; 
 
 

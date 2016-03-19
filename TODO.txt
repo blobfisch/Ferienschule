@@ -1,24 +1,83 @@
+
+
+Listen
+Raumbelegungsplan
+Statistik
+Schülerliste (->ohne Titel)
+	Emailliste
+
+Mail
+Anmeldebestätigung
+persönlicher Stundenplan
+Schüler beim Löschen informieren
+
+TODO
+Prüfe ob Kurs noch verfügbar (Browser cache!)
+tutorenauswahl zeitliche überschneidungen vermeiden
+Setup für das neue Schuljahr -> prüfe ob Datenbank leer
+Dummy Stundenplan im admin Panel
+Formular aktivieren/deaktivieren
+		noch X von Y Plätzen frei -> damit man weis, wann eine Gruppe nicht zustande kommt--
+
+
+
+
+
+
+
+
+
+
+
+
+Lohner-TODOs:
+
+Expresstodo:
+		Excel template fett, grau hinterlegt, deutsch
+		Absendeknopf soll mail verschicken--
+		tutoreneinteilung -> Zeit anzeigen
+
+Dateiupload
+		Gruppen einteilung -> Log (x gruppen erfolgreich, Nicht zustandegekommen: ...) --
+		Raumliste, Tutorenliste importieren --
+connect with interface
+		Räume in Tabelle(Gruppen nach Zeitslots sortiert) Tutoren zuordnen --
+Zeitliche überschneidungen vermeiden
+
+HTML validierung
+Chromium collapse on dropdown
+SQL force immediate update
+			Admin die Anzahl Kurse erhöhen lassen --
+			Gruppeneinteilung überarbeiten --
+Was passiert mit Gruppen die nicht zustandekommen?
+Listen generieren
+bei generate_groups und import_themenliste tabellen vorher leeren
+			Freie Plätze mit einbeziehen --
+			Tabellen überarbeiten --
+			Datenbank überarbeiten --
+file download/upload
+			Tage sortierbar machen --
+Prüfe ob Kurs noch verfügbar (Browser cache!)
+Kurs erhöhen und Schüler löschen -> aussagekräftigere Meldung
+
+
 Lohner-TODOs
 
-Doppeltanmeldungen blockieren --
-Mini-Admininterface mit Knöpfen für scripte --
-Schüler rauslöschen --
-rewrite import_themenliste
+-- Doppeltanmeldungen blockieren --
+-- Mini-Admininterface mit Knöpfen für scripte --
+-- Schüler rauslöschen --
+-- rewrite import_themenliste --
 
 
 
 
-Zeiten & Räume eigentlicher Stundenplan
 
 Administrationsinterface absichern (Step 1 und 2 vereinen?)
 
 anzahl der gruppen zum thema hinzufügen?
-anzahl der schüler zur gruppe hinzufügen -> damit könnte ermittelt werden wo noch platz ist
 n-te gruppe zur gruppe hinzufügen
 
 tabellen generieren
-
-rewrite import_themenliste.php with PHPExcel
 
 bei generate_groups und import_themenliste tabellen vorher leeren
 import_themenliste nur vor erster Anmeldung zulassen

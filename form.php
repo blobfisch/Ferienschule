@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -20,6 +21,8 @@
 <body>
 	<h1>Anmeldung zur Ferienschule</h1>
 	<div id="wrapper">
+	<?php require("php/text.php");?>
+	
 		<form name"input" action="php/input.php" method="post" target="error_m">
 			<div class="form-group" >
 				<label for="firstname">Vorname:</label>
@@ -36,11 +39,11 @@
 			<div class="form-group" class="form-inline">
 				<label for="grade">Klasse:</label><br />
 				<select name="grade" class="form-control" id="grade_select">
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-					<option value="9">9</option>
-					<option value="10">10</option>
+					<option data-toggle='collapse' data-target='#grade6' value='6'>6</option>
+					<option data-toggle='collapse' data-target='#grade7' value="7">7</option>
+					<option data-toggle='collapse' data-target='#grade8' value="8">8</option>
+					<option data-toggle='collapse' data-target='#grade9' value="9">9</option>
+					<option data-toggle='collapse' data-target='#grade10' value="10">10</option>
 				</select>
 				<label class="radio-inline"><input type="radio" name="class" value="A" checked>A</label>
 				<label class="radio-inline"><input type="radio" name="class" value="B">B</label>

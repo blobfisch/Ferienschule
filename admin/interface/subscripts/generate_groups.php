@@ -1,6 +1,9 @@
 <?php
 	//TODO check wether table is empty
-
+	
+	$successfull_groups = 0;
+	$groups_too_small = 0;
+  $groups_too_small_text = [];
 	//distributes the amount of students for one topic in equal groups, that are as small as possible
 	function distribute_students($number_of_students){
 		$minimum_in_a_group = 3;
@@ -26,14 +29,11 @@
 			return NULL;
 		}
 	}
-
 	
-
-	
-	function add_group_to_DB($id_topic,$id_slot,$conn){
-		if(mysqli_query($conn, "INSERT INTO groups (id_topic, id_slot) VALUES ('$id_topic','$id_slot');")) {
+	function add_group_to_DB($id_topic,$id_slot,$group_num,$conn){
+		if(mysqli_query($conn, "INSERT INTO groups (id_topic, id_slot, group_num) VALUES ('$id_topic','$id_slot', '$group_num');")) {
 	    $id = mysqli_insert_id($conn);
-	    echo "New group created successfully.<br/>";
+	    //echo "New group created successfully.<br/>";
 		} else {
 		    echo "Error: "  . mysqli_error($conn);
 		}
@@ -43,7 +43,7 @@
 	function add_relation_students_groups($id_student,$id_group,$conn){
 		if(mysqli_query($conn, "INSERT INTO students_groups (id_student, id_group) VALUES (".$id_student.",".$id_group.");")) {
 		  $id = mysqli_insert_id($conn);
-		  echo "New foreign key relation students_groups created successfully.<br/>";
+		  //echo "New foreign key relation students_groups created successfully.<br/>";
 		} else {
 		  echo "Error: "  . mysqli_error($conn);
 		}
@@ -64,7 +64,7 @@
 			return $sql_count_students["count"];
 		}
 
-	require_once("../php/sql_functions.php");
+	require_once("../../../php/sql_functions.php");
 	
 	//function in php/sql_functions.php
 	$conn = build_connection();
@@ -80,7 +80,10 @@
 //	  echo "Error: "  . mysqli_error($conn);
 //	}
 
-	$topics = mysqli_query($conn,"SELECT id_topic, id_slot FROM topics;");
+	$topics = mysqli_query($conn,"SELECT id_topic, topics.id_slot, grade, subject, day FROM topics
+		JOIN slots
+		ON slots.id_slot=topics.id_slot;"
+		);
 	while($topic = mysqli_fetch_assoc($topics)) {
 
 		
@@ -104,14 +107,19 @@
 			if($distribution){
 
 				//add one new group
-				$id = add_group_to_DB($topic['id_topic'],$topic['id_slot'],$conn);
+				$group_num = 1;
+				$id = add_group_to_DB($topic['id_topic'],$topic['id_slot'],$group_num,$conn);
+				$group_num++;
+				$successfull_groups++;
 				$i = 0;
 
 				//put students in groups
 				while($student = mysqli_fetch_assoc($students)) {
 					if($distribution[$i]<=0){
 						//create more groups if required
-						$id = add_group_to_DB($topic['id_topic'],$topic['id_slot'],$conn);
+						$id = add_group_to_DB($topic['id_topic'],$topic['id_slot'],$group_num,$conn);
+						$group_num++;
+						$successfull_groups++;
 						$i++;
 					}
 					add_relation_students_groups($student['id_student'],$id,$conn);
@@ -121,8 +129,18 @@
 			else{
 				//Nicht genügend Teilnehmer -> Kurs findet nicht statt!
 				//TODO Handeln
+				$groups_too_small++;
+				$groups_too_small_text[] = "Klasse ".$topic['grade']." ".$topic['day']." ".$topic['subject']." (".$number_of_students." Anmeldunge(n))";
 			}
 		}
+	}
+	echo "$successfull_groups Gruppen wurden erfolgreich erstellt.<br/>";
+	echo "$groups_too_small Gruppen sind mit weniger als 3 Anmeldungen nicht zustande gekommen:<br/>";
+
+	
+
+	for ($index=0;$index<$groups_too_small;$index++) {
+		echo "  ".$groups_too_small_text[$index]."<br/>";
 	}
 
 	close_connection($conn);
