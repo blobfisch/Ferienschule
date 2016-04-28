@@ -41,5 +41,9 @@
 	require "../../list_scripts/full_student_list.php";
 	require "../../list_scripts/email.php";
 	require "../../list_scripts/full_group_list.php";
+	require "../../list_scripts/raumbelegung.php";
+	require "../../list_scripts/statistics.php";
+
+
 	echo "finished";
 ?>

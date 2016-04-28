@@ -25,4 +25,7 @@
 		<iframe name="output_2" frameborder="0" border="0" cellspacing="0" style="border-style: none;width: 100%; height: 100px;"></iframe>
 	</div>
 </div>
+<hr/>
+<h3>Test Stundenplan <small>Hier kann überprüft werden, ob die Daten im Stundenplan stimmen, bevor dieser veröffentlicht wird</small></h3><br/>
+<?php require("../test_timetable/choose_topics.php");?>
 </body>

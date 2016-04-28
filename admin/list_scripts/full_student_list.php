@@ -5,7 +5,7 @@
 				 ->setDescription("Liste mit den Daten aller Angemeldeten Schüler");
 
 	$sql = "SELECT students.lastname, students.firstname, students.grade, students.class, slots.day,
-	topics.subject, topics.title
+	topics.subject
 	FROM students
 	JOIN students_topics
 	ON students.id_student=students_topics.id_student
@@ -28,7 +28,7 @@
 	$objPHPExcel->getActiveSheet()->SetCellValue('D'.$rowCount,'Klasse');
 	$objPHPExcel->getActiveSheet()->SetCellValue('E'.$rowCount,'Tag');
 	$objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount,'Fach');
-	$objPHPExcel->getActiveSheet()->SetCellValue('G'.$rowCount,'Thema');
+
 	while($row = mysqli_fetch_array($result)){ 
 	$rowCount++;
 	if($previous_name != ($row['0']." ".$row['1'])){
@@ -40,7 +40,7 @@
 	}
 	$objPHPExcel->getActiveSheet()->SetCellValue('E'.$rowCount, $row['4']);
 	$objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount, $row['5']);
-	$objPHPExcel->getActiveSheet()->SetCellValue('G'.$rowCount, $row['6']);
+
 	$previous_name=$row['0']." ".$row['1'];
 	} 
 

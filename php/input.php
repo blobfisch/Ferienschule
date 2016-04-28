@@ -1,17 +1,24 @@
 <?php session_start()?>
-<?php/*function send_mail($firstname,$lastname,$id_topic,$conn){
-	$sql = "SELECT * FROM topics WHERE id_topic=$id_topics";
+<?php
+function send_mail($firstname, $lastname, $email, $conn){
 
-		if (mysqli_query($conn, $sql)) {
-		    
-		} else {
-		    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-		}
-	$mail_text="Hallo $firstname $lastname,
-  du hast dich erfolgreich zur Ferienschule angemeldet!";
-  
+	$sql= "SELECT * FROM topics 
+					JOIN students_topics ON topics.id_topic = students_topics.id_topic
+					JOIN students ON students_topics.id_student = students.id_student
+					JOIN slots ON topics.id_slot = slots.id_slot
+					WHERE firstname='$firstname' AND lastname = '$lastname';";
+	$custom_text = "";
+	$topics = mysqli_query($conn, $sql) or trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error('ferienschule'), E_USER_ERROR);
+
+	while ($topic = mysqli_fetch_assoc($topics)) {
+		  $custom_text = $custom_text."\n".$topic['day']." ".$topic['subject']." Klasse: ".$topic['grade']." ".$topic['title'];
+		} 
+	$subject = "Sie haben sich erfolgreich zur Ferienschule angemeldet!";
+
+	$mail_text="Hallo $firstname $lastname, \nVielen Dank für Ihre Anmeldung, die wir hiermit wie folgt bestätigen:\n".$custom_text.
+  "\n\nBitte informieren Sie uns umgehend unter elternbeirat@eg.schulen.konstanz.de, wenn Sie Ihre Anmeldung stornieren oder ändern müssen. Das Angebot der FERIENSCHULE ELLENRIEDER ist mit Blick auf die Teilnehmerzahl beschränkt. \nHinzu kommt, dass wir zur Finanzierung der Kurse 3 – 5 Schüler pro Kurs benötigen. \nKurse, die aufgrund von Absagen unterbesetzt sind, können nicht stattfinden. \nNur, wenn wir stornierte Plätze rechtzeitig vor Ablauf der Anmeldefrist wieder freischalten, haben andere Mitschüler die Chance, sich noch einbuchen zu können. \n\nVielen Dank für Ihr Verständnis!";
 	require("send_mail.php");
-}*/;
+};
 ?>
 
 <!-- Import Bootstrap to make errormessages in iframe look nice -->
@@ -62,8 +69,7 @@
 		} else {
 		    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
-		
-		/*send_mail($firstname,$lastname,$id_topic);*/
+		send_mail($firstname, $lastname, $email, $conn);
 		close_connection($conn);
 	}
 	else{

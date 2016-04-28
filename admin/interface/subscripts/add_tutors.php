@@ -64,7 +64,15 @@
 			JOIN groups
 			ON tutors.id_tutor = groups.id_tutor
 			WHERE id_group = ".$group['id_group'].";");
-		$tutors = mysqli_query($conn, "SELECT * FROM tutors");
+
+		$availiable_tutors = mysqli_query($conn, "SELECT firstname, lastname, tutors.id_tutor FROM tutors
+			LEFT JOIN groups
+			ON tutors.id_tutor=groups.id_tutor
+			WHERE tutors.id_tutor NOT IN(
+				SELECT tutors.id_tutor FROM tutors 
+				JOIN groups ON tutors.id_tutor=groups.id_tutor 
+				WHERE id_slot=".$group['id_slot'].")
+			GROUP BY tutors.id_tutor;");
 
 		echo "<td>";
 		echo "<form method='post' action='".$_SERVER['PHP_SELF']."' target='_self'>";
@@ -75,7 +83,7 @@
 		else{
 			echo "<option selected disabled style='display:none';></option>";
 		}
-		while($tutor = mysqli_fetch_assoc($tutors)) {
+		while($tutor = mysqli_fetch_assoc($availiable_tutors)) {
 			$data=serialize(array('id_group' => $group['id_group'], 'id_tutor' => $tutor['id_tutor']));
 			echo "<option value='".$data."'>".$tutor['firstname']." ".$tutor['lastname']."</option>";
 		}
@@ -86,7 +94,15 @@
 			JOIN groups
 			ON rooms.id_room = groups.id_room
 			WHERE id_group = ".$group['id_group'].";");
-		$rooms = mysqli_query($conn, "SELECT * FROM rooms");
+
+		$availiable_rooms = mysqli_query($conn, "SELECT rooms.id_room, room_name FROM rooms
+			LEFT JOIN groups
+			ON rooms.id_room=groups.id_room
+			WHERE rooms.id_room NOT IN(
+				SELECT rooms.id_room FROM rooms 
+				JOIN groups ON rooms.id_room=groups.id_room
+				WHERE id_slot=".$group['id_slot'].")
+			GROUP BY rooms.id_room;");
 		echo "<td>";
 		echo "<select name='room_select' class='form-control' id='room_select'>";
 		if($selected_room = mysqli_fetch_assoc($selected_rooms)){
@@ -95,7 +111,7 @@
 		else{
 			echo "<option selected disabled style='display:none';></option>";
 		}
-		while($room = mysqli_fetch_assoc($rooms)) {
+		while($room = mysqli_fetch_assoc($availiable_rooms)) {
 			$data=serialize(array('id_group' => $group['id_group'], 'id_room' => $room['id_room']));
 			echo "<option value='".$data."'>".$room['room_name']."</option>";
 		}

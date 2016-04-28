@@ -2,10 +2,13 @@
 <p><div class='alert alert-success'>Anmeldezeitraum: 30. Mai – 17. Juni 2016<br/>
 Ferienschule Ellenrieder öffnet: 05. – 09. September 2016<br/>
 Kosten pro Kurs: 5€ (Wird am Anfang der Stunde in Bar eingesammelt)</div>
-Die Kurse laufen täglich in der Zeit von 9.00 – 14.00 Uhr in drei verschiedenen Zeitschienen. Jeder Schüler kann entsprechend maximal für 3 Kurse am Tag angemeldet werden. <br/>
-Anmeldungen werden in der Reihenfolge ihres Eingangs aufgenommen. <br/>
-Die Kurse kommen zustande, wenn sich mindestens 3 Schüler pro Kurs anmelden. Zeichnet sich ab, dass sich weniger Schüler anmelden, sprechen Sie 1 – 2 Mitschüler Ihres Kindes an, damit der Kurs finanziert werden kann.<br/>
-Pro Kurs werden maximal 5 Schüler aufgenommen, um ein intensives Lernen zu gewährleisten. <br/><br/>
+<ul>
+
+<li>Die Kurse laufen täglich in der Zeit von 9.00 – 14.00 Uhr in drei verschiedenen Zeitschienen. Jeder Schüler kann entsprechend maximal für 3 Kurse am Tag angemeldet werden. </li>
+<li>Anmeldungen werden in der Reihenfolge ihres Eingangs aufgenommen. </li>
+<li>Die Kurse kommen zustande, wenn sich mindestens 3 Schüler pro Kurs anmelden. Zeichnet sich ab, dass sich weniger Schüler anmelden, sprechen Sie 1 – 2 Mitschüler Ihres Kindes an, damit der Kurs finanziert werden kann.</li>
+<li>Pro Kurs werden maximal 5 Schüler aufgenommen, um ein intensives Lernen zu gewährleisten. </li><br/>
+</ul>
 <div class='alert alert-danger'>Die Anmeldung ist verbindlich. Bitte buchen Sie Ihr Kind nur ein, wenn es tatsächlich an der FERIENSCHULE ELLENRIEDER teilnehmen möchte, denn das Angebot ist mit Blick auf die Teilnehmerzahl beschränkt. So ist es anderen Mitschülern gegenüber unfair, Plätze zu blocken, die schließlich nicht in Anspruch genommen werden.  Plätze, die vor Ablauf der Anmeldefrist von uns nicht wieder freigeschaltet werden, können von anderen nicht mehr gebucht werden. Deshalb informieren Sie uns bitte unbedingt, wenn Sie eine Anmeldung stornieren müssen! Danke!
 </div></p>
 <hr/>
@@ -24,7 +27,8 @@ Pro Kurs werden maximal 5 Schüler aufgenommen, um ein intensives Lernen zu gew�
 </ol>
 Bitte beachten Sie: 
 Jeder Schüler kann nur einmal über das Online-Verfahren angemeldet werden. Maximal ist dabei die Buchung von 15 Kursen pro Schüler - über die Woche verteilt - möglich. <br/>
-<br/><div class='alert alert-warning'> Sollten Sie nach Abschluss Ihrer Online-Anmeldung noch Änderungswünsche haben, informieren Sie uns über elternbeirat@eg.schulen.konstanz.de. Wir löschen dann Ihre bestehende Anmeldung und Sie können Ihr Kind daraufhin erneut anmelden. Wir bitten Sie um Verständnis, dass bei der Neuanmeldung kein Anspruch auf bereits vorab gebuchte Plätze besteht. Danke! </div>
+<br/><div class='alert alert-warning'> Sollten Sie nach Abschluss Ihrer Online-Anmeldung noch Änderungswünsche haben, informieren Sie uns über 
+elternbeirat@eg.schulen.konstanz.de. Wir löschen dann Ihre bestehende Anmeldung und Sie können Ihr Kind daraufhin erneut anmelden. Wir bitten Sie um Verständnis, dass bei der Neuanmeldung kein Anspruch auf bereits vorab gebuchte Plätze besteht. Danke! </div>
 </p>
 <hr/>"
 

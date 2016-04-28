@@ -1,8 +1,10 @@
 <?php
-   require("../PHPmailer/PHPMailerAutoload.php"); // path to the PHPMailerAutoload.php file.
+   require(__DIR__."/../PHPmailer/PHPMailerAutoload.php"); // path to the PHPMailerAutoload.php file.
 
  
    $mail = new PHPMailer();
+
+   $mail->CharSet = "UTF-8";
    $mail->IsSMTP();
    $mail->Mailer = "smtp";
    $mail->Host = "smtp-mail.outlook.com";
@@ -18,7 +20,7 @@
    $mail->AddAddress($email, "$firstname $lastname");
    $mail->AddReplyTo("nina-roeckelein@hotmail.de", "Ferienschule");
  
-   $mail->Subject  = "Anmeldung zur Ferienschule";
+   $mail->Subject  = $subject;
    $mail->Body     = $mail_text;
    $mail->WordWrap = 50;  
  
@@ -27,6 +29,6 @@
 		echo 'Mailer error: ' . $mail->ErrorInfo;
 		exit;
    } else {
-		echo 'Message has been sent.';
+		//echo 'Message has been sent.';
    }
 ?>

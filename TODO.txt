@@ -1,12 +1,11 @@
 
-
-Listen
-Raumbelegungsplan
+->Listen
+-- Raumbelegungsplan		-> Tutoren!! -> leeres Worksheet entfernen
 Statistik
-Schülerliste (->ohne Titel)
-	Emailliste
+-- Schülerliste (->ohne Titel)
+-- Emailliste
 
-Mail
+->Mail
 Anmeldebestätigung
 persönlicher Stundenplan
 Schüler beim Löschen informieren
@@ -15,10 +14,10 @@ TODO
 Prüfe ob Kurs noch verfügbar (Browser cache!)
 tutorenauswahl zeitliche überschneidungen vermeiden
 Setup für das neue Schuljahr -> prüfe ob Datenbank leer
-Dummy Stundenplan im admin Panel
-Formular aktivieren/deaktivieren
-		noch X von Y Plätzen frei -> damit man weis, wann eine Gruppe nicht zustande kommt--
-
+	(Dummy Stundenplan im admin Panel)           <--Punkte loswerden
+	Formular aktivieren/deaktivieren             <--schöne Fehlerseite
+	noch X von Y Plätzen frei -> damit man weis, wann eine Gruppe nicht zustande kommt--
+Daten fürs nächste Jahr editierbar machen
 
 
 
@@ -61,12 +60,12 @@ Prüfe ob Kurs noch verfügbar (Browser cache!)
 Kurs erhöhen und Schüler löschen -> aussagekräftigere Meldung
 
 
-Lohner-TODOs
+			Lohner-TODOs
 
--- Doppeltanmeldungen blockieren --
--- Mini-Admininterface mit Knöpfen für scripte --
--- Schüler rauslöschen --
--- rewrite import_themenliste --
+			-- Doppeltanmeldungen blockieren --
+			-- Mini-Admininterface mit Knöpfen für scripte --
+			-- Schüler rauslöschen --
+			-- rewrite import_themenliste --
 
 
 
@@ -82,11 +81,3 @@ tabellen generieren
 bei generate_groups und import_themenliste tabellen vorher leeren
 import_themenliste nur vor erster Anmeldung zulassen
 
-
-Fragen an Gudrun
-Priorität bei der Einteilung (kleine Gruppen, Klassen)
-Wie funktioniert der Stundenplan?
-Räume und Tutoren
-Was genau ist die Liste: Freie Plätze, gruppen < 5?
-Muss das Format Spalten Kreuzchen eingehalten werden?
-Welche Listen werden ganz genau benötigt -> aufzeichen

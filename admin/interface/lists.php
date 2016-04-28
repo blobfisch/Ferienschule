@@ -10,4 +10,13 @@
 
 	</div>
 </div>
+<hr/>
+<h3>Download</h3>
+<a href=<?php echo "../lists/full_student_list.xlsx"?> >Schülerliste</a><br/>
+<a href=<?php echo "../lists/Raumbelegungsplan.xlsx"?> >Raumbelegungsplan</a><br/>
+<a href=<?php echo "../lists/Mailadressen.xlsx"?> >Mailadressen</a><br/>
+<a href=<?php echo "../lists/Statistik.xlsx"?> >Statistik</a>
+
+
+
 </body>

@@ -73,7 +73,7 @@
 			mysqli_query($conn, "SELECT COUNT(*) AS count FROM students WHERE firstname = '$firstname' AND lastname = '$lastname' AND grade = '$grade';")
 		); 
 		if($result["count"]>0){
-			echo "<div class='alert alert-warning'>Wir haben bereits eine Anmeldung unter diesem Namen erhalten. Wenden Sie sich bitte an ...</div>";
+			echo "<div class='alert alert-warning'>Wir haben bereits eine Anmeldung unter diesem Namen erhalten. Wenn Sie diese nocheinmal ändern müssen wenden sich bitte an elternbeirat@eg.schulen.konstanz.de</div>";
 			$data_ok=false;
 		}
 	}
